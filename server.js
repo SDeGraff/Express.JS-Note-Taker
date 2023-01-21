@@ -1,5 +1,7 @@
 // importing express from node modules
+const { response } = require('express')
 const express = require('express')
+const { request } = require('http')
 
 const app = express()
 
@@ -20,7 +22,13 @@ app.get('/', (request, response) =>
     response.sendFile(path.join(__dirname, '/public/index.html'))    
 )
 
+app.get('/notes', (request, response) =>
+    response.sendFile(path.join(__dirname, '/public/notes.html'))
+)
 
+app.listen(PORT, () =>
+console.log(`App listening at http://localhost:${PORT}`)
+)
 
 
 
