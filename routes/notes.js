@@ -35,7 +35,7 @@ notes.delete('/', (request, response) => {
     fs.readFile('./db/db.json', 'utf-8', (error, data) => {
         const dbdata = JSON.parse(data)
         const filteredDBData = dbData.filter(note => note.id !== id)
-        fs.writeFile('./db/db.json' JSON.stringify(filteredDBData), (error) => {
+        fs.writeFile('./db/db.json', JSON.stringify(filteredDBData), (error) => {
             response.json("Deleted!!!")
          })
     })
