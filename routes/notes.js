@@ -4,7 +4,7 @@ const notes = require('express').Router()
 const {v4: uuidv4} = require('uuid')
 // getting uuid
 
-const {readAndAppend, readFromFile} = require('../lib/fsFunct')
+const {readAndAppend, readFromFile} = require('../note/fsFunction')
 // getting readandappedn and readfromfile 
 
 const fs = require('fs')
