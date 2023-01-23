@@ -1,8 +1,11 @@
 const notes = require('express').Router()
+// getting router from express
 
 const {v4: uuidv4} = require('uuid')
+// getting uuid
 
-const {readAndAppend, readFromFil} = require('../note/fsFunction')
+const {readAndAppend, readFromFile} = require('../note/fsFunction')
+// getting readandappedn and readfromfile 
 
 const fs = require('fs')
 const { response } = require('express')
@@ -27,4 +30,15 @@ notes.post('/', (request,response) => {
     }
 })
 
-notes.delete
+notes.delete('/', (request, response) => {
+    const id = request.params.id
+    fs.readFile('./db/db.json', 'utf-8', (error, data) => {
+        const dbdata = JSON.parse(data)
+        const filteredDBData = dbData.filter(note => note.id !== id)
+        fs.writeFile('./db/db.json' JSON.stringify(filteredDBData), (error) => {
+            response.json("Deleted!!!")
+         })
+    })
+})
+
+module.exports = notes
