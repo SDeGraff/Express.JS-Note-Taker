@@ -8,8 +8,8 @@ const {readAndAppend, readFromFile} = require('../lib/fsFunct')
 // getting readandappedn and readfromfile 
 
 const fs = require('fs')
-// const { response } = require('express')
-// const { request } = require('http')
+const { response } = require('express')
+const { request } = require('http')
 
 notes.get('/', (request, response) =>
     readFromFile('./db/db.json').then((data) => response.json(JSON.parse(data)))
